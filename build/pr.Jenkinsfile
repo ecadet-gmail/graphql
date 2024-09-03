@@ -44,7 +44,7 @@ node {
 
             steps {
 
-                withNPM(npmrcConfig:'my-custom-npmrc') {
+                withNPM(npmrcConfig:'MyNpmrcConfig') {
                     echo "Performing npm build..."
                     sh 'npm install'
                 }
