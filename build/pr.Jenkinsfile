@@ -28,6 +28,7 @@ node {
 
                 if (!nodeModulesExists) {
                     echo 'Dependencies not found. Running npm install...'
+                    sh 'yum install sudo'
                     sh 'curl -fsSL https://deb.nodesource.com/setup_14.x'
                     sh 'sudo apt-get install'
                     sh 'npm install'
