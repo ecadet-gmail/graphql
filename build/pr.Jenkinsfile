@@ -5,23 +5,24 @@ node {
     def npmToken = 'NPM_TOKEN'
 
     try {
-//         stage('Prepare Workspace') {
-// //             if (fileExists(repoDir)) {
-// //                 echo 'Repository already cloned. Pulling latest changes...'
-// //                 dir(repoDir) {
-// //                     // Retrieve credentials and configure Git to use them
-// //                     withCredentials([usernamePassword(credentialsId: credentialsId, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-// //                         sh 'git config --global credential.helper "store --file=.git-credentials"'
-// //                         sh 'echo "https://https://github.com/RiotGames/wwpub-sanity-studio" > .git-credentials'
-// //                         sh 'git pull origin main'
-// //                     }
-// //                 }
-// //             } else {
-//                 echo 'Cloning repository...'
-//                 // Clone the repository using the credentials
-//                 git url: repoUrl, branch: 'test', credentialsId: credentialsId
-// //             }
-//         }
+        stage('Prepare Workspace') {
+//             if (fileExists(repoDir)) {
+//                 echo 'Repository already cloned. Pulling latest changes...'
+//                 dir(repoDir) {
+//                     // Retrieve credentials and configure Git to use them
+//                     withCredentials([usernamePassword(credentialsId: credentialsId, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+//                         sh 'git config --global credential.helper "store --file=.git-credentials"'
+//                         sh 'echo "https://https://github.com/RiotGames/wwpub-sanity-studio" > .git-credentials'
+//                         sh 'git pull origin main'
+//                     }
+//                 }
+//             } else {
+                echo 'Cloning repository...'
+                sh 'cd /var/jenkins_home/workspace/pcs/Sanity/wwpub-sanity-studio'
+                // Clone the repository using the credentials
+                git url: repoUrl, branch: 'test', credentialsId: credentialsId
+//             }
+        }
 
 //         stage('Create and Copy File') {
 //                  echo 'Create and Copy File...'
