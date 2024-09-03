@@ -54,6 +54,11 @@ node {
 //             }
 
         stage('Install Dependencies') {
+            agent {
+                docker {
+                    image 'node:7.4'
+                }
+            }
             dir(repoDir) {
                 def nodeModulesExists = fileExists('node_modules') && sh(returnStatus: true, script: 'test -d node_modules && ls -A node_modules') == 0
                 // Delete the .npmrc file after copying
