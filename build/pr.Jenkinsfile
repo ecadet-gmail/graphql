@@ -18,7 +18,7 @@ node {
             } else {
                 echo 'Cloning repository...'
                 // Clone the repository using the credentials
-                git url: repoUrl, branch: 'main', credentialsId: credentialsId
+                git url: repoUrl, branch: 'test', credentialsId: credentialsId
             }
         }
 
