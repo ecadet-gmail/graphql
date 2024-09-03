@@ -18,9 +18,14 @@ node {
 //                 }
 //             } else {
                 echo 'Cloning repository...'
-                sh 'cd /var/jenkins_home/workspace/pcs/Sanity/wwpub-sanity-studio'
-                // Clone the repository using the credentials
-                git url: repoUrl, branch: 'test', credentialsId: credentialsId
+                // Define the directory where the repository should be cloned
+                def cloneDir = '/var/jenkins_home/workspace/pcs/Sanity/wwpub-sanity-studio'
+
+                // Use the dir block to set the working directory
+                dir(cloneDir) {
+                    // Clone the repository using the credentials
+                    git url: repoUrl, branch: 'test', credentialsId: credentialsId
+                }
 //             }
         }
 
