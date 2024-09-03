@@ -33,9 +33,7 @@ node {
 //                     sh 'nvm install 16'
 //                     sh 'npm install'
 //                      npm:install
-                    withNPM(npmrcConfig: 'MyNpmrcConfig') {
-                       sh 'npm install'
-                    }
+                    npm 'npm install'
                 } else {
                     echo 'Dependencies already installed. Skipping npm install.'
                 }
