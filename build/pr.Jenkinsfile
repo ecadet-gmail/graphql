@@ -28,7 +28,7 @@ node {
 
                 if (!nodeModulesExists) {
                     echo 'Dependencies not found. Running npm install...'
-                    sh 'curl -fsSL https://deb.nodesource.com/setup_14.x | -E bash'
+                    sh 'curl -fsSL https://deb.nodesource.com/setup_14.x'
                     sh 'apt-get install -y nodejs'
                     sh 'npm install'
                 } else {
