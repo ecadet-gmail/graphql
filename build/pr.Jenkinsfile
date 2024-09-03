@@ -1,4 +1,5 @@
-def repoUrl = 'https://github.com/your-repo/sanity-react-project.git'
+node {
+    def repoUrl = 'https://github.com/your-repo/sanity-react-project.git'
     def repoDir = 'sanity-react-project'
     def credentialsId = 'ecadet-pcs'
 
@@ -41,3 +42,4 @@ def repoUrl = 'https://github.com/your-repo/sanity-react-project.git'
         echo 'Sanity CMS environment setup failed.'
         throw e
     }
+}
