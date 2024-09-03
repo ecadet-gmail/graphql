@@ -22,19 +22,36 @@ node {
 //             }
         }
 
-        stage('Install Dependencies') {
-            dir(repoDir) {
-                def nodeModulesExists = fileExists('node_modules') && sh(returnStatus: true, script: 'test -d node_modules && ls -A node_modules') == 0
+//         stage('Install Dependencies') {
+//             dir(repoDir) {
+//                 def nodeModulesExists = fileExists('node_modules') && sh(returnStatus: true, script: 'test -d node_modules && ls -A node_modules') == 0
+//
+//                 if (!nodeModulesExists) {
+//                     echo 'Dependencies not found. Running npm install...'
+// //                     sh 'chsh -s /bin/zsh'
+// //                     sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash'
+// //                     sh 'nvm install 16'
+// //                     sh 'npm install'
+//                      npm:install
+//                 } else {
+//                     echo 'Dependencies already installed. Skipping npm install.'
+//                 }
+//             }
+//         }
 
-                if (!nodeModulesExists) {
-                    echo 'Dependencies not found. Running npm install...'
-//                     sh 'chsh -s /bin/zsh'
-//                     sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash'
-//                     sh 'nvm install 16'
-//                     sh 'npm install'
-                     npm install
-                } else {
-                    echo 'Dependencies already installed. Skipping npm install.'
+        stage('npm-build') {
+            agent {
+                docker {
+                    image 'node:7.4'
+                }
+            }
+
+            steps {
+                echo "Branch is ..."
+
+                withNPM(npmrcConfig:'my-custom-npmrc') {
+                    echo "Performing npm build..."
+                    sh 'npm install'
                 }
             }
         }
