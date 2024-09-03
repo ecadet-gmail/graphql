@@ -6,19 +6,19 @@ node {
     try {
         stage('Prepare Workspace') {
 //             if (fileExists(repoDir)) {
-                echo 'Repository already cloned. Pulling latest changes...'
-                dir(repoDir) {
-                    // Retrieve credentials and configure Git to use them
-                    withCredentials([usernamePassword(credentialsId: credentialsId, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-                        sh 'git config --global credential.helper "store --file=.git-credentials"'
-                        sh 'echo "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com" > .git-credentials'
-                        sh 'git pull origin main'
-                    }
-                }
+//                 echo 'Repository already cloned. Pulling latest changes...'
+//                 dir(repoDir) {
+//                     // Retrieve credentials and configure Git to use them
+//                     withCredentials([usernamePassword(credentialsId: credentialsId, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+//                         sh 'git config --global credential.helper "store --file=.git-credentials"'
+//                         sh 'echo "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com" > .git-credentials'
+//                         sh 'git pull origin main'
+//                     }
+//                 }
 //             } else {
-//                 echo 'Cloning repository...'
-//                 // Clone the repository using the credentials
-//                 git url: repoUrl, branch: 'test', credentialsId: credentialsId
+                echo 'Cloning repository...'
+                // Clone the repository using the credentials
+                git url: repoUrl, branch: 'test', credentialsId: credentialsId
 //             }
         }
 
