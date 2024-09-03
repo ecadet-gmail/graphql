@@ -33,7 +33,7 @@ node {
 //                     sh 'nvm install 16'
 //                     sh 'npm install'
 //                      npm:install
-                     withNPM(npmrcConfig: 'MyNpmrcConfig') {
+                     withNPM(npmrcConfig: 'd0946c7b-85e2-444d-b198-03b07ceaa0c5') {
                          sh 'npm install'
                      }
                 } else {
