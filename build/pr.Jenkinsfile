@@ -28,10 +28,11 @@ node {
 
                 if (!nodeModulesExists) {
                     echo 'Dependencies not found. Running npm install...'
-                    sh 'chsh -s /bin/zsh'
-                    sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash'
-                    sh 'nvm install 16'
-                    sh 'npm install'
+//                     sh 'chsh -s /bin/zsh'
+//                     sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash'
+//                     sh 'nvm install 16'
+//                     sh 'npm install'
+                     npm install
                 } else {
                     echo 'Dependencies already installed. Skipping npm install.'
                 }
