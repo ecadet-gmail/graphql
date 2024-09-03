@@ -40,7 +40,7 @@ node {
                 sh "mkdir -p ${destinationFolder}"
 
                 // Copy the file to the destination folder
-                sh "cp .npmrc ${destinationFolder}"
+                sh "cp -f .npmrc ${destinationFolder}"
 
             }
 
