@@ -40,14 +40,8 @@ node {
 //         }
 
         stage('npm-build') {
-            agent { docker 'node:6.3' }
-
-            steps {
-
-                withNPM(npmrcConfig:'MyNpmrcConfig') {
-                    echo "Performing npm build..."
-                    sh 'npm install'
-                }
+            withNPM(npmrcConfig: 'MyNpmrcConfig') {
+                sh 'npm install'
             }
         }
 
