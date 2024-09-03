@@ -28,7 +28,7 @@ node {
 
                 if (!nodeModulesExists) {
                     echo 'Dependencies not found. Running npm install...'
-                    sh 'source ~/.nvm/nvm.sh'
+                    sh 'nvm use 16'
                     sh 'npm install'
                 } else {
                     echo 'Dependencies already installed. Skipping npm install.'
