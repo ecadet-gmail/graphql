@@ -51,7 +51,7 @@ node {
             dir(repoDir) {
                 def nodeModulesExists = fileExists('node_modules') && sh(returnStatus: true, script: 'test -d node_modules && ls -A node_modules') == 0
                 // Delete the .npmrc file after copying
-                sh "rm -f /var/jenkins_home/workspace/pcs/Sanity/.npmrc"
+//                 sh "rm -f /var/jenkins_home/workspace/pcs/Sanity/.npmrc"
                 if (!nodeModulesExists) {
                     echo 'Dependencies not found. Running npm install...'
 //                     sh 'chsh -s /bin/zsh'
