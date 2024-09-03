@@ -1,6 +1,6 @@
 node {
-    def repoUrl = 'https://github.com/your-repo/sanity-react-project.git'
-    def repoDir = 'sanity-react-project'
+    def repoUrl = 'https://github.com/RiotGames/wwpub-sanity-studio.git'
+    def repoDir = 'wwpub-sanity-studio'
     def credentialsId = 'ecadet-pcs'
 
     try {
