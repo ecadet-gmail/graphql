@@ -33,7 +33,7 @@ node {
 //                     sh 'nvm install 16'
 //                     sh 'npm install'
 //                      npm:install
-//                     npm '-v'
+                     npm 'npm -v'
                 } else {
                     echo 'Dependencies already installed. Skipping npm install.'
                 }
