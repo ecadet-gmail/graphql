@@ -2,7 +2,7 @@ node {
     def repoUrl = 'https://github.com/RiotGames/wwpub-sanity-studio.git'
     def repoDir = 'wwpub-sanity-studio'
     def credentialsId = 'ecadet-pcs'
-    dev npmToken = 'NPM_TOKEN'
+    def npmToken = 'NPM_TOKEN'
 
     try {
         stage('Prepare Workspace') {
@@ -23,26 +23,26 @@ node {
 //             }
         }
 
-//         stage('Create and Copy File') {
-//                  echo 'Create and Copy File...'
-//                 // Define the content of the file
-//                 def fileContent = '''@riotgames:registry=https://npm.pkg.github.com
-//                                   //npm.pkg.github.com/:_authToken=''' + npmToken + '''
-//                                   always-auth=true'''
-//
-//                 // Create the file with the specified content
-//                 writeFile file: '.npmrc', text: fileContent
-//
-//                 // Specify the destination folder
-//                 def destinationFolder = '/var/jenkins_home/workspace/pcs/Sanity'
-//
-//                 // Ensure the destination folder exists
-//                 sh "mkdir -p ${destinationFolder}"
-//
-//                 // Copy the file to the destination folder
-//                 sh "cp .npmrc ${destinationFolder}"
-//
-//             }
+        stage('Create and Copy File') {
+                 echo 'Create and Copy File...'
+                // Define the content of the file
+                def fileContent = '''@riotgames:registry=https://npm.pkg.github.com
+                                  //npm.pkg.github.com/:_authToken=''' + npmToken + '''
+                                  always-auth=true'''
+
+                // Create the file with the specified content
+                writeFile file: '.npmrc', text: fileContent
+
+                // Specify the destination folder
+                def destinationFolder = '/var/jenkins_home/workspace/pcs/Sanity'
+
+                // Ensure the destination folder exists
+                sh "mkdir -p ${destinationFolder}"
+
+                // Copy the file to the destination folder
+                sh "cp .npmrc ${destinationFolder}"
+
+            }
 
         stage('Install Dependencies') {
             dir(repoDir) {
