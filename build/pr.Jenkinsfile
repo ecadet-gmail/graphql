@@ -56,11 +56,11 @@ node {
 //                     sh 'chsh -s /bin/zsh'
 //                     sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash'
 //                     sh 'nvm install 16'
-                     sh 'npm install'
+ //                    sh 'npm install'
 //                      npm:install
-//                      withNPM(npmrcConfig: 'd0946c7b-85e2-444d-b198-03b07ceaa0c5') {
-//                          sh 'npm install'
-//                      }
+                     withNPM(npmrcConfig: 'd0946c7b-85e2-444d-b198-03b07ceaa0c5') {
+                         sh 'npm install'
+                     }
                 } else {
                     echo 'Dependencies already installed. Skipping npm install.'
                 }
