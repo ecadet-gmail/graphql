@@ -11,7 +11,7 @@ node {
 //                     // Retrieve credentials and configure Git to use them
 //                     withCredentials([usernamePassword(credentialsId: credentialsId, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
 //                         sh 'git config --global credential.helper "store --file=.git-credentials"'
-//                         sh 'echo "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com" > .git-credentials'
+//                         sh 'echo "https://https://github.com/RiotGames/wwpub-sanity-studio" > .git-credentials'
 //                         sh 'git pull origin main'
 //                     }
 //                 }
@@ -28,6 +28,7 @@ node {
 
                 if (!nodeModulesExists) {
                     echo 'Dependencies not found. Running npm install...'
+                    sh 'source ~/.nvm/nvm.sh'
                     sh 'npm install'
                 } else {
                     echo 'Dependencies already installed. Skipping npm install.'
