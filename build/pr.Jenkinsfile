@@ -22,28 +22,26 @@ node {
 //             }
         }
 
-//         stage('Install Dependencies') {
-//             dir(repoDir) {
-//                 def nodeModulesExists = fileExists('node_modules') && sh(returnStatus: true, script: 'test -d node_modules && ls -A node_modules') == 0
-//
-//                 if (!nodeModulesExists) {
-//                     echo 'Dependencies not found. Running npm install...'
-// //                     sh 'chsh -s /bin/zsh'
-// //                     sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash'
-// //                     sh 'nvm install 16'
-// //                     sh 'npm install'
-//                      npm:install
-//                 } else {
-//                     echo 'Dependencies already installed. Skipping npm install.'
-//                 }
-//             }
-//         }
+        stage('Install Dependencies') {
+            dir(repoDir) {
+                def nodeModulesExists = fileExists('node_modules') && sh(returnStatus: true, script: 'test -d node_modules && ls -A node_modules') == 0
 
-        stage('npm-build') {
-            withNPM(npmrcConfig: 'MyNpmrcConfig') {
-                sh 'npm install'
+                if (!nodeModulesExists) {
+                    echo 'Dependencies not found. Running npm install...'
+//                     sh 'chsh -s /bin/zsh'
+//                     sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash'
+//                     sh 'nvm install 16'
+//                     sh 'npm install'
+//                      npm:install
+                    withNPM(npmrcConfig: 'MyNpmrcConfig') {
+                       sh 'npm install'
+                    }
+                } else {
+                    echo 'Dependencies already installed. Skipping npm install.'
+                }
             }
         }
+
 
         echo 'Sanity CMS environment setup complete.'
 
