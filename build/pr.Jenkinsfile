@@ -28,9 +28,7 @@ node {
                 // Define the content of the file
                 withCredentials([string(credentialsId: 'NPM_TOKEN', variable: 'npmToken')]) {
                                 // Define the content of the file
-                                def fileContent = """@riotgames:registry=https://npm.pkg.github.com
-                                //npm.pkg.github.com/:_authToken=${npmToken}
-                                always-auth=true"""
+                                def fileContent = """"""
 
                                 // Create the file with the specified content
                                 writeFile file: '.npmrc', text: fileContent
@@ -38,11 +36,13 @@ node {
                                 // Specify the destination folder
                                 def destinationFolder = '/var/jenkins_home/workspace/pcs/Sanity'
 
-                                // Ensure the destination folder exists
-                                sh "mkdir -p ${destinationFolder}"
+//                                 // Ensure the destination folder exists
+//                                 sh "mkdir -p ${destinationFolder}"
 
                                 // Copy the file to the destination folder
                                 sh "cp -f .npmrc ${destinationFolder}"
+
+                                echo 'File created and copied successfully...'
                             }
 
             }
