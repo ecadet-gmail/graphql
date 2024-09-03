@@ -5,7 +5,7 @@ node {
 
     try {
         stage('Prepare Workspace') {
-            if (fileExists(repoDir)) {
+//             if (fileExists(repoDir)) {
                 echo 'Repository already cloned. Pulling latest changes...'
                 dir(repoDir) {
                     // Retrieve credentials and configure Git to use them
@@ -15,11 +15,11 @@ node {
                         sh 'git pull origin main'
                     }
                 }
-            } else {
-                echo 'Cloning repository...'
-                // Clone the repository using the credentials
-                git url: repoUrl, branch: 'test', credentialsId: credentialsId
-            }
+//             } else {
+//                 echo 'Cloning repository...'
+//                 // Clone the repository using the credentials
+//                 git url: repoUrl, branch: 'test', credentialsId: credentialsId
+//             }
         }
 
         stage('Install Dependencies') {
