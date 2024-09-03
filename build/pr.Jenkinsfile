@@ -40,14 +40,9 @@ node {
 //         }
 
         stage('npm-build') {
-            agent {
-                docker {
-                    image 'node:7.4'
-                }
-            }
+            agent { docker 'node:6.3' }
 
             steps {
-                echo "Branch is ..."
 
                 withNPM(npmrcConfig:'my-custom-npmrc') {
                     echo "Performing npm build..."
