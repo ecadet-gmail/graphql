@@ -5,47 +5,47 @@ node {
     def npmToken = 'NPM_TOKEN'
 
     try {
-        stage('Prepare Workspace') {
-//             if (fileExists(repoDir)) {
-//                 echo 'Repository already cloned. Pulling latest changes...'
-//                 dir(repoDir) {
-//                     // Retrieve credentials and configure Git to use them
-//                     withCredentials([usernamePassword(credentialsId: credentialsId, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-//                         sh 'git config --global credential.helper "store --file=.git-credentials"'
-//                         sh 'echo "https://https://github.com/RiotGames/wwpub-sanity-studio" > .git-credentials'
-//                         sh 'git pull origin main'
-//                     }
-//                 }
-//             } else {
-                echo 'Cloning repository...'
-                // Clone the repository using the credentials
-                git url: repoUrl, branch: 'test', credentialsId: credentialsId
+//         stage('Prepare Workspace') {
+// //             if (fileExists(repoDir)) {
+// //                 echo 'Repository already cloned. Pulling latest changes...'
+// //                 dir(repoDir) {
+// //                     // Retrieve credentials and configure Git to use them
+// //                     withCredentials([usernamePassword(credentialsId: credentialsId, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+// //                         sh 'git config --global credential.helper "store --file=.git-credentials"'
+// //                         sh 'echo "https://https://github.com/RiotGames/wwpub-sanity-studio" > .git-credentials'
+// //                         sh 'git pull origin main'
+// //                     }
+// //                 }
+// //             } else {
+//                 echo 'Cloning repository...'
+//                 // Clone the repository using the credentials
+//                 git url: repoUrl, branch: 'test', credentialsId: credentialsId
+// //             }
+//         }
+
+//         stage('Create and Copy File') {
+//                  echo 'Create and Copy File...'
+//                 // Define the content of the file
+//                 withCredentials([string(credentialsId: 'NPM_TOKEN', variable: 'npmToken')]) {
+//                                 // Define the content of the file
+//                                 def fileContent = """"""
+//
+//                                 // Create the file with the specified content
+//                                 writeFile file: '.npmrc', text: fileContent
+//
+//                                 // Specify the destination folder
+//                                 def destinationFolder = '/var/jenkins_home/workspace/pcs/Sanity'
+//
+// //                                 // Ensure the destination folder exists
+// //                                 sh "mkdir -p ${destinationFolder}"
+//
+//                                 // Copy the file to the destination folder
+//                                 sh "cp -f .npmrc ${destinationFolder}"
+//
+//                                 echo 'File created and copied successfully...'
+//                             }
+//
 //             }
-        }
-
-        stage('Create and Copy File') {
-                 echo 'Create and Copy File...'
-                // Define the content of the file
-                withCredentials([string(credentialsId: 'NPM_TOKEN', variable: 'npmToken')]) {
-                                // Define the content of the file
-                                def fileContent = """"""
-
-                                // Create the file with the specified content
-                                writeFile file: '.npmrc', text: fileContent
-
-                                // Specify the destination folder
-                                def destinationFolder = '/var/jenkins_home/workspace/pcs/Sanity'
-
-//                                 // Ensure the destination folder exists
-//                                 sh "mkdir -p ${destinationFolder}"
-
-                                // Copy the file to the destination folder
-                                sh "cp -f .npmrc ${destinationFolder}"
-
-                                echo 'File created and copied successfully...'
-                            }
-
-            }
 
         stage('Install Dependencies') {
             dir(repoDir) {
